@@ -11,6 +11,7 @@ Welcome to TODO_PROJECT_NAME's documentation!
    :caption: Contents:
 
    api.rst
+   gallery/index
 
 
 Indices and tables

@@ -39,10 +39,14 @@ doc:
 
 dclean:
 	rm -rf doc/build/
+	rm -rf doc/source/gallery/
 	find doc/ -name '*.pyc' -delete
 
+build_test:
+	pytest --mpl-generate-path=tests/baseline -m base
+
 test:
-	pytest --cov-report term:skip-covered
+	pytest --cov-report term:skip-covered --mpl
 
 check:
 	isort .
