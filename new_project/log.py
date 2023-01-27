@@ -30,7 +30,7 @@ class ColoredFormatter(logging.Formatter):
         return super(ColoredFormatter, self).format(record)
 
 
-def create_logger(name="TODO_PROJECT_NAME", level="WARNING"):
+def create_logger(name="TODO_PROJECT_NAME", level="INFO"):
     """build a logger with name and level wanted
 
     can be call again to change level of logger already initialized
