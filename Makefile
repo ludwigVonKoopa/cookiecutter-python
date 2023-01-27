@@ -31,10 +31,10 @@ clean:
 	find TODO_PROJECT_NAME/ -name '*.c' -delete
 
 install:
-	$(PYTHONSETUP) install
+	pip install .
 
 develop:
-	$(PYTHONSETUP) develop
+	pip install -e .
 
 redevelop:
 	$(PYTHONSETUP) -q install --record _redevelop.txt
