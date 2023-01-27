@@ -1,0 +1,32 @@
+name: TODO_env_name
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  # usefull and needed for all projects
+  - python>=3.9
+  - setuptools-scm   # automatic project numbering
+  - pip
+
+  # for your project
+  - numpy
+  - cython
+  - netCDF4
+  - PyYAML
+
+  - matplotlib
+  - zarr
+  - pandas
+
+  #### tests
+  - pytest
+  - pytest-cov
+  - pytest-mpl
+
+  #### doc
+  - sphinx
+  - pydata-sphinx-theme
+
+
+  # - pip:
+  #   -

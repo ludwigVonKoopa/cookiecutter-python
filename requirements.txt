@@ -1,0 +1,9 @@
+setuptools-scm
+numpy
+cython
+
+PyYAML
+
+#### tests
+pytest
+pytest-cov
