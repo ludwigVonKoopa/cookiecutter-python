@@ -1,25 +1,12 @@
-TODO_PROJECT_NAME
-====
-
-all command are available with
-
-.. code-block:: console
-
-    make help
+new_project
+===========
 
 
-to install TODO_PROJECT_NAME, start
+run
 
 .. code-block:: console
 
-    make clean    # nettoie tous les fichiers relatifs au projet
-    make install  # installe le projet
+    python build_project.py
 
 
-
-to build documentation :
-
-.. code-block:: console
-
-    make dclean
-    make dinstall
+to changes files with the project name you want

@@ -19,7 +19,7 @@
 
 project = 'TODO_PROJECT_NAME'
 copyright = '2023, TODO_USER_NAME'
-author = 'C. Busché'
+author = 'TODO_USER_NAME'
 
 import TODO_PROJECT_NAME
 # The full version, including alpha/beta/rc tags
@@ -61,8 +61,13 @@ exclude_patterns = []
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
 
+intersphinx_mapping= {
+    "numpy":    ("https://numpy.org/doc/stable/", None),
+    "python":   ("https://docs.python.org/3/", None),
+    "matplotlib": ("https://matplotlib.org/stable/", None),
+}
 
-
+autosummary_generate = True
 # -- Options for HTML output -------------------------------------------------
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for

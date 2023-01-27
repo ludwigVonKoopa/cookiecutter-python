@@ -31,6 +31,23 @@ class ColoredFormatter(logging.Formatter):
 
 
 def create_logger(name="TODO_PROJECT_NAME", level="WARNING"):
+    """build a logger with name and level wanted
+
+    can be call again to change level of logger already initialized
+
+    Parameters
+    ----------
+    name : str, optional
+        name of the logger, by default "TODO_PROJECT_NAME"
+    level : str or int, optional
+        level of the logger, by default "WARNING"
+
+    Returns
+    -------
+    logging.Logger
+        logger created
+    """
+
     # set a format for console use
     format_log = "%(asctime)s - %(levelname)-10s %(name)s.%(funcName)s : %(message)s"
 

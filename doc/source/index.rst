@@ -7,9 +7,10 @@ Welcome to TODO_PROJECT_NAME's documentation!
 ==================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
    :caption: Contents:
 
+   api.rst
 
 
 Indices and tables

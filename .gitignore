@@ -20,6 +20,8 @@ lib/
 /packages
 __pycache__/
 .pytest_cache
+doc/build/
+doc/source/_autosummary
 
 
 # coverage
