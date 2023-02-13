@@ -27,10 +27,10 @@ def start_cmd(cmd):
 
 abspath = os.path.abspath('.')
 
-PROJECT_NAME = ask_question("name of the project")
-PROJECT_PATH = ask_question("absolute path to install project")
-USER_NAME    = ask_question("name of the user", lower=False)
-CONDA_ENV_NAME = ask_question("conda environment name", lower=False)
+PROJECT_PATH = ask_question("Q1/4 : absolute path to install project (without the name)")
+PROJECT_NAME = ask_question("Q2/4 : name of the project (without the path)")
+USER_NAME    = ask_question("Q3/4 : name of the user", lower=False)
+CONDA_ENV_NAME = ask_question("Q4/4 : conda environment name", lower=False)
 
 
 PROJECT_FULL_PATH = os.path.join(PROJECT_PATH, PROJECT_NAME)
@@ -50,8 +50,10 @@ start_cmd(f"find {PROJECT_FULL_PATH} -type f | xargs  sed -i 's/TODO\_USER\_NAME
 start_cmd(f"find {PROJECT_FULL_PATH} -type f | xargs  sed -i 's/TODO\_PROJECT\_NAME/{PROJECT_NAME}/'")
 
 # change README from metaproject to actual project
-start_cmd(f"rm -rfv {os.path.join(PROJECT_FULL_PATH, 'README.rst')}")
+start_cmd(f"rm -rfv {os.path.join(PROJECT_FULL_PATH, 'README.rst')} {os.path.join(PROJECT_FULL_PATH, 'README.md')}")
 start_cmd(f"mv -v {os.path.join(PROJECT_FULL_PATH, 'README_after_build.rst')} {os.path.join(PROJECT_FULL_PATH, 'README.rst')}")
+start_cmd(f"mv -v {os.path.join(PROJECT_FULL_PATH, 'README_after_build.md')}  {os.path.join(PROJECT_FULL_PATH, 'README.md')}")
 
+fichiers = ["build_project.py"]
 print()
 print(f"project builded in '{PROJECT_FULL_PATH}' !")

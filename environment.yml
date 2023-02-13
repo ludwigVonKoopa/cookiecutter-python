@@ -1,7 +1,8 @@
 name: TODO_env_name
 channels:
-  - defaults
   - conda-forge
+  - defaults
+
 dependencies:
   # usefull and needed for all projects
   - python>=3.9
