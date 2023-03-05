@@ -1,5 +1,4 @@
 [run]
-source = TODO_PROJECT_NAME/
+source = src/TODO_PROJECT_NAME/
 omit =
-       TODO_PROJECT_NAME/_version.py
        tests/*

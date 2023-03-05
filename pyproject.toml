@@ -1,0 +1,48 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "TODO_PROJECT_NAME"
+dynamic = ["version"]
+authors = [{name = "user", email = "user@mail.com"}]
+description = "TODO_DESCRIPTION"
+readme = "README.rst"
+requires-python = ">=3.9"
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "setuptools-scm",
+]
+
+[project.optional-dependencies]
+test = ["pytest", "pytest-cov"]
+dev  = ["black", "mypy", "flake8", "isort"]
+doc  = ["sphinx", "pydata-sphinx-theme"]
+
+# [project.scripts]
+# new_project = "TODO_PROJECT_NAME.module:function"
+
+[tool.setuptools.packages.find]
+namespaces = true
+where = ["src"]
+
+[tool.setuptools.package-data]
+"TODO_PROJECT_NAME.share" = ["*"]
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "--cov-config=.coveragerc --cov --cov-report html --cov-report term"
+testpaths = "tests/"
+
+[tool.mypy]
+files = "build_project.py"
+
+[tool.isort]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+line_length = 88
+profile = "black"
+src_paths = ["src/", "test"]

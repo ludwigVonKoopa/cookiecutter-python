@@ -1,13 +1,5 @@
 # Makefile for TODO_PROJECT_NAME
 
-# You can set these variables from the command line.
-PYTHONSETUP	= python setup.py
-
-SPHINXOPTS    = -n -v
-SPHINXBUILD   = sphinx-build
-SOURCEDIR     = doc/
-BUILDDIR      = build
-
 .PHONY: help clean install develop redevelop di dclean dinstall doc #test
 
 help:
@@ -23,8 +15,7 @@ help:
 	@echo "  build_test	start test exemples"
 
 clean:
-	rm -rf $(BUILDDIR)/lib*
-	rm -rf $(BUILDDIR)/dist*
+	rm -rf build/
 	rm -rf .eggs/
 	find TODO_PROJECT_NAME/ -name '*.pyc' -delete
 	find TODO_PROJECT_NAME/ -name '*.so' -delete
@@ -43,14 +34,16 @@ redevelop:
 	rm -f _redevelop.txt
 
 doc:
-	@$(SPHINXBUILD) -M html doc/source doc/build
+	sphinx-build -M html doc/source doc/build
 
 dclean:
 	rm -rf doc/build/
 	find doc/ -name '*.pyc' -delete
 
-build_test:
-	pytest
 test:
 	pytest --cov-report term:skip-covered
 
+check:
+	isort .
+	flake8
+	mypy --strict
