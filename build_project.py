@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-import os
 import argparse
+import os
 
 
 def usage():
@@ -19,7 +19,7 @@ def ask_question(question, lower=True):
     while not project_name_ok:
         ask = f"{question} ? (without caps)" if lower else f"{question} ?"
 
-        print("#"*len(ask))
+        print("#" * len(ask))
         print(ask)
         ANSWER = input()
         ANSWER = ANSWER.lower()
@@ -65,12 +65,14 @@ else:
 PROJECT_FULL_PATH = os.path.join(PROJECT_PATH, PROJECT_NAME)
 
 if os.path.exists(PROJECT_FULL_PATH):
-    print(f"there is already a project called '{PROJECT_NAME}' inside folder '{PROJECT_PATH}'. Please change project name, or project path, or delete already existing project then start again")
+    print(f"there is already a project called '{PROJECT_NAME}' inside folder '{PROJECT_PATH}'. ")
+    print("Please change project name, or project path, or delete already existing project then start again")
     exit()
 
 fichiers = [
-    "doc", "scripts", "src", "tests", ".coveragerc", ".gitignore", "CHANGELOG.md",
-    "environment.yml", "environment_dev.yml", "pyproject.toml",
+    "doc", "scripts", "src", "tests",
+    ".coveragerc", ".gitignore", "CHANGELOG.md", "Makefile",
+    "environment.yml", "environment_dev.yml", "pyproject.toml", "setup.cfg", "todo.md"
 ]
 
 

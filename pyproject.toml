@@ -7,7 +7,7 @@ name = "TODO_PROJECT_NAME"
 dynamic = ["version"]
 authors = [{name = "user", email = "user@mail.com"}]
 description = "TODO_DESCRIPTION"
-readme = "README.rst"
+readme = "README.md"
 requires-python = ">=3.9"
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -37,7 +37,8 @@ addopts = "--cov-config=.coveragerc --cov --cov-report html --cov-report term"
 testpaths = "tests/"
 
 [tool.mypy]
-files = "build_project.py"
+warn_return_any = true
+warn_unused_configs = true
 
 [tool.isort]
 multi_line_output = 3

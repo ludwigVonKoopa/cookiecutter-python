@@ -24,5 +24,5 @@ At least, use
 ### apply modifications from main to matplotlib branch
 
 ```bash
-    git checkout matplotlib; git rebase master matplotlib
+    git checkout matplotlib_project; git rebase main matplotlib_project
 ```

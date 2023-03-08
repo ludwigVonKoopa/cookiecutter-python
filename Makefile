@@ -1,6 +1,6 @@
 # Makefile for TODO_PROJECT_NAME
 
-.PHONY: help clean install develop redevelop di dclean dinstall doc #test
+.PHONY: help clean install develop redevelop di dclean dinstall doc check #test
 
 help:
 	@echo "Please use \`make <target>' where <target> is one of"
@@ -13,13 +13,14 @@ help:
 	@echo "  dinstall	complete rebuild code then documentation"
 	@echo "  test		start test exemples"
 	@echo "  build_test	start test exemples"
+	@echo "  check  	start test exemples"
 
 clean:
 	rm -rf build/
 	rm -rf .eggs/
-	find TODO_PROJECT_NAME/ -name '*.pyc' -delete
-	find TODO_PROJECT_NAME/ -name '*.so' -delete
-	find TODO_PROJECT_NAME/ -name '*.c' -delete
+	find src/TODO_PROJECT_NAME/ -name '*.pyc' -delete
+	find src/TODO_PROJECT_NAME/ -name '*.so' -delete
+	find src/TODO_PROJECT_NAME/ -name '*.c' -delete
 
 install:
 	pip install .

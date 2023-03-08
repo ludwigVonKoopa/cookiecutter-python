@@ -6,6 +6,7 @@ dependencies:
   # usefull and needed for all projects
   - python>=3.9
   - setuptools-scm   # automatic project numbering
+  - ipykernel
   - pip
 
   # for your project

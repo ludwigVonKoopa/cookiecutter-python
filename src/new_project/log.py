@@ -1,4 +1,3 @@
-import argparse
 import logging
 
 logger = logging.getLogger(__name__)
@@ -59,7 +58,6 @@ def create_logger(name="TODO_PROJECT_NAME", level="INFO"):
             _logger.setLevel(level)
             _logger.info("changed logging level to %s", level_name)
         return _logger
-
 
     # set up logging to console
     console = logging.StreamHandler()
