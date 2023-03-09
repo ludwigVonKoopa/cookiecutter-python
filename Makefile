@@ -46,7 +46,7 @@ build_test:
 	pytest --mpl-generate-path=tests/baseline -m base
 
 test:
-	pytest --cov-report term:skip-covered --mpl
+	pytest --mpl
 
 check:
 	isort .

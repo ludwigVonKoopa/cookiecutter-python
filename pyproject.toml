@@ -21,6 +21,12 @@ test = ["pytest", "pytest-cov"]
 dev  = ["black", "mypy", "flake8", "isort"]
 doc  = ["sphinx", "pydata-sphinx-theme"]
 
+[project.urls]
+homepage = "https://xxx"
+changelog = "https://xxx"
+repository = "https://gitlab.fr/xx/yy"
+
+
 # [project.scripts]
 # new_project = "TODO_PROJECT_NAME.module:function"
 
@@ -31,19 +37,6 @@ where = ["src"]
 [tool.setuptools.package-data]
 "TODO_PROJECT_NAME.share" = ["*"]
 
-[tool.pytest.ini_options]
-minversion = "6.0"
-addopts = "--cov-config=.coveragerc --cov --cov-report html --cov-report term"
-testpaths = "tests/"
-
 [tool.mypy]
 warn_return_any = true
 warn_unused_configs = true
-
-[tool.isort]
-multi_line_output = 3
-include_trailing_comma = true
-force_grid_wrap = 0
-line_length = 88
-profile = "black"
-src_paths = ["src/", "test"]
