@@ -13,9 +13,11 @@ python build_project.py \
     --conda-env-name="xxxx_testmycondaenv"
 
 cd $PATH_FOLDER/$NAME_PROJECT
+git init
 make install
 
 make test
+make check -k
 
 # cd
 # rm -rf $PATH_FOLDER/$NAME_PROJECT

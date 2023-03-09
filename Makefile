@@ -42,7 +42,7 @@ dclean:
 	find doc/ -name '*.pyc' -delete
 
 test:
-	pytest --cov-report term:skip-covered
+	pytest
 
 check:
 	isort .

@@ -14,6 +14,7 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
+import TODO_PROJECT_NAME
 
 # -- Project information -----------------------------------------------------
 
@@ -21,12 +22,9 @@ project = 'TODO_PROJECT_NAME'
 copyright = '2023, TODO_USER_NAME'
 author = 'TODO_USER_NAME'
 
-import TODO_PROJECT_NAME
 
 # The full version, including alpha/beta/rc tags
 release = TODO_PROJECT_NAME.__version__
-
-import os
 
 # -- General configuration ---------------------------------------------------
 
