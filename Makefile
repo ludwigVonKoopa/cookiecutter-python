@@ -18,6 +18,8 @@ help:
 clean:
 	rm -rf build/
 	rm -rf .eggs/
+	rm -rf src/TODO_PROJECT_NAME.egg-info
+	rm -rf src/TODO_PROJECT_NAME/__pycache__/
 	find src/TODO_PROJECT_NAME/ -name '*.pyc' -delete
 	find src/TODO_PROJECT_NAME/ -name '*.so' -delete
 	find src/TODO_PROJECT_NAME/ -name '*.c' -delete
@@ -38,7 +40,10 @@ doc:
 	sphinx-build -M html doc/source doc/build
 
 dclean:
-	rm -rf doc/build/
+	rm -rf doc/build
+	rm -rf doc/source/_autosummary
+	rm -rf doc/source/gallery
+
 	find doc/ -name '*.pyc' -delete
 
 test:
@@ -47,4 +52,5 @@ test:
 check:
 	isort .
 	flake8
-	mypy --strict
+	black src tests
+	pre-commit run --all-files

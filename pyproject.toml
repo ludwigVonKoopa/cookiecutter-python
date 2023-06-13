@@ -13,12 +13,12 @@ classifiers = [
     "Programming Language :: Python :: 3",
 ]
 dependencies = [
-    "setuptools-scm",
+    "setuptools-scm", "ipykernel"
 ]
 
 [project.optional-dependencies]
 test = ["pytest", "pytest-cov"]
-dev  = ["black", "mypy", "flake8", "isort"]
+dev  = ["black", "mypy", "flake8", "isort", "pre-commit"]
 doc  = ["sphinx", "pydata-sphinx-theme"]
 
 [project.urls]
@@ -40,3 +40,5 @@ where = ["src"]
 [tool.mypy]
 warn_return_any = true
 warn_unused_configs = true
+
+[tool.setuptools_scm]

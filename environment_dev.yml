@@ -33,5 +33,6 @@ dependencies:
   - mypy
   - flake8
   - isort
+  - pre-commit
   # - pip:
   #   -
