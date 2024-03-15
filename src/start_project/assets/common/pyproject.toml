@@ -18,7 +18,7 @@ dependencies = [
 
 [project.optional-dependencies]
 test = ["pytest", "pytest-cov"]
-dev  = ["black", "mypy", "flake8", "isort", "pre-commit"]
+dev  = ["black", "flake8", "isort", "pre-commit"]
 doc  = ["sphinx", "pydata-sphinx-theme"]
 
 [project.urls]
@@ -27,8 +27,8 @@ changelog = "https://xxx"
 repository = "https://gitlab.fr/xx/yy"
 
 
-# [project.scripts]
-# my_script = "TODO_PROJECT_NAME.module:function"
+[project.scripts]
+TODO_PROJECT_NAME_example_script = "TODO_PROJECT_NAME.appli:cli"
 
 [tool.setuptools.packages.find]
 namespaces = true

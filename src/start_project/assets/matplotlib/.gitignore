@@ -1,0 +1,30 @@
+
+# IDE
+.vscode/
+.idea/
+
+# files generated
+*.so
+*.pyc
+*.eggs
+*.egg-info/
+output/
+
+# compiled libraries
+archs/
+bin/
+lib/
+/build
+/dist
+/builds
+/packages
+__pycache__/
+.pytest_cache
+doc/build/
+doc/source/_autosummary
+doc/source/gallery
+
+
+# coverage
+*htmlcov/
+*.coverage

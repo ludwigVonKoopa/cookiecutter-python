@@ -1,6 +1,7 @@
 import argparse
 import logging
 import os
+import shutil
 
 import start_project.log  # noqa: F401
 
@@ -43,6 +44,11 @@ def usage():
         help="initialise the git repositery with first commit",
         action="store_true",
     )
+    parser.add_argument(
+        "--matplotlib",
+        help="Create a project which contain a matplotlib gallery",
+        action="store_true",
+    )
     return parser.parse_args()
 
 
@@ -66,8 +72,27 @@ def ask_question(question, lower=True):
     return ANSWER
 
 
+def copy_and_eval(src, dest, PROJECT_NAME, USER_NAME, CONDA_ENV_NAME):
+
+    with open(src) as f_in:
+        code = f_in.read()
+
+    code = code.replace("TODO_env_name", CONDA_ENV_NAME)
+    code = code.replace("TODO_USER_NAME", USER_NAME)
+    code = code.replace("TODO_PROJECT_NAME", PROJECT_NAME)
+
+    logger.debug(f"creating file {dest}")
+    with open(dest, "w") as f_out:
+        f_out.write(code)
+
+
 def install_project(
-    PROJECT_NAME, PROJECT_PATH, USER_NAME, CONDA_ENV_NAME, init_git=False
+    PROJECT_NAME,
+    PROJECT_PATH,
+    USER_NAME,
+    CONDA_ENV_NAME,
+    init_git=True,
+    matplotlib=False,
 ):
 
     logger.info(f"Project name   : {PROJECT_NAME}")
@@ -88,6 +113,9 @@ def install_project(
     source_folder = os.path.join(os.path.dirname(__file__), "assets/common/")
 
     for path, directories, files in os.walk(source_folder):
+        if "__pycache__" in path:
+            continue
+
         output_path = os.path.join(project_fullname, path.replace(source_folder, ""))
 
         os.makedirs(output_path, exist_ok=True)
@@ -95,16 +123,31 @@ def install_project(
             output_file = os.path.join(output_path, fichier)
             source_file = os.path.join(path, fichier)
 
-            with open(source_file) as f_in:
-                code = f_in.read()
+            copy_and_eval(
+                source_file, output_file, PROJECT_NAME, USER_NAME, CONDA_ENV_NAME
+            )
 
-            code = code.replace("TODO_env_name", CONDA_ENV_NAME)
-            code = code.replace("TODO_USER_NAME", USER_NAME)
-            code = code.replace("TODO_PROJECT_NAME", PROJECT_NAME)
+    if matplotlib:
+        source_folder = os.path.join(os.path.dirname(__file__), "assets/matplotlib/")
+        for path, directories, files in os.walk(source_folder):
 
-            logger.debug(f"creating file {output_file}")
-            with open(output_file, "w") as f_out:
-                f_out.write(code)
+            if "__pycache__" in path:
+                continue
+
+            output_path = os.path.join(
+                project_fullname, path.replace(source_folder, "")
+            )
+
+            os.makedirs(output_path, exist_ok=True)
+            for fichier in files:
+                output_file = os.path.join(output_path, fichier)
+                source_file = os.path.join(path, fichier)
+
+                copy_and_eval(
+                    source_file, output_file, PROJECT_NAME, USER_NAME, CONDA_ENV_NAME
+                )
+
+    # raise Exception()
 
     if init_git:
         os.system(f"cd {project_fullname}; git init")
@@ -114,10 +157,15 @@ def install_project(
             f"cd {project_fullname}; git commit -m \"project created with 'start_project'\""
         )
 
+    shutil.move(
+        os.path.join(project_fullname, "src", "TODO_PROJECT_NAME"),
+        os.path.join(project_fullname, "src", PROJECT_NAME),
+    )
     logger.info(f"Project '{PROJECT_NAME}' created !")
     logger.info(
         "Please check the 'readme.md' in your project to fill the last missing data"
     )
+    return project_fullname
 
 
 def cli():

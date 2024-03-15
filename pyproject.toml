@@ -19,7 +19,7 @@ dependencies = [
 [project.optional-dependencies]
 test = ["pytest", "pytest-cov"]
 dev  = ["black", "mypy", "flake8", "isort", "pre-commit"]
-doc  = ["sphinx", "pydata-sphinx-theme"]
+doc  = ["sphinx", "pydata-sphinx-theme", "sphinx_gallery"]
 
 [project.urls]
 homepage = "https://xxx"
@@ -28,7 +28,7 @@ repository = "https://gitlab.fr/xx/yy"
 
 
 [project.scripts]
-start_project = "start_project.appli:cli"
+start-project = "start_project.appli:cli"
 
 [tool.setuptools.packages.find]
 namespaces = true
