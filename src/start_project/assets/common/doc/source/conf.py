@@ -14,17 +14,17 @@
 # import sys
 # sys.path.insert(0, os.path.abspath('.'))
 
-import start_project
+import TODO_PROJECT_NAME
 
 # -- Project information -----------------------------------------------------
 
-project = "start_project"
-copyright = "2024, ludwigVonKoopa"
-author = "ludwigVonKoopa"
+project = "TODO_PROJECT_NAME"
+copyright = "2023, TODO_USER_NAME"
+author = "TODO_USER_NAME"
 
 
 # The full version, including alpha/beta/rc tags
-release = start_project.__version__
+release = TODO_PROJECT_NAME.__version__
 
 # -- General configuration ---------------------------------------------------
 

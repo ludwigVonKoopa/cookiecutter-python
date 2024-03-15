@@ -1,4 +1,4 @@
-# start_project
+# TODO_PROJECT_NAME
 
 
 
@@ -9,7 +9,7 @@ all command are available with
 ```
 
 
-to install start_project, start
+to install TODO_PROJECT_NAME, start
 
 ```bash
     make clean    # clean the project

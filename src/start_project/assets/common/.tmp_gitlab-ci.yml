@@ -1,0 +1,87 @@
+image: "xxx:xxx:latest"
+# Change pip's cache directory to be inside the project directory since we can
+# only cache local items.
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  CONDA_BUILT_PACKAGES: build/conda_packages
+
+cache:
+  paths:
+    - .cache/pip
+
+before_script:
+  - python -V
+  - conda init bash
+  - source /root/.bashrc
+  - source ~/.bashrc
+  - python -V
+  - pwd
+
+
+stages:
+  - test
+  - build
+  - deploy
+
+pages:
+  script:
+    - apt-get clean
+    - apt-get update
+
+    - conda install mamba
+    - mamba env create -f environment.yml
+    - source activate TODO_env_name
+    - mamba install pip setuptools-scm
+
+    - python -V
+    - which pip
+    - pip --version
+
+    - git --no-pager log -10
+    - pip install .
+
+    - mamba install sphinx sphinx-gallery nbformat pydata-sphinx-theme sphinx-copybutton
+
+    - sphinx-build -M html doc/source doc/build
+
+    - mv doc/build/html/ public/
+    - du -hsc public/*
+
+  artifacts:
+    paths:
+      - public
+  only:
+    - tags
+    - test-doc
+
+
+pytest:   # This job runs in the test stage.
+  stage: test    # It only starts when the job in the build stage completes successfully.
+  script:
+    - conda install mamba
+    - mamba env create -f environment.yml
+    - source activate TODO_env_name
+    - which python
+    - pip install .
+    - git --no-pager log -10
+
+    - python -V
+    - conda list
+
+    - mamba install pytest pytest-cov
+
+    - pytest -v
+
+flake8:   # This job also runs in the test stage.
+  stage: test    # It can run at the same time as unit-test-job (in parallel).
+  script:
+    - conda install isort black flake8
+
+    - isort --version
+    - isort . --check-only
+
+    - black --version
+    - black --check --diff src
+
+    - flake8 --version
+    - flake8 --append-config setup.cfg

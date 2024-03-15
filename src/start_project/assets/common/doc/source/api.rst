@@ -9,4 +9,4 @@ API reference
     :template: custom-module-template.rst
     :recursive:
 
-    start_project
+    TODO_PROJECT_NAME

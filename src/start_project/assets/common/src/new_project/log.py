@@ -4,8 +4,8 @@ logger = logging.getLogger(__name__)
 
 
 class ColoredFormatter(logging.Formatter):
-    """Coloration syntaxique des message de logging
-    """
+    """Coloration syntaxique des message de logging"""
+
     COLOR_LEVEL = dict(
         CRITICAL="\037[37;41m",
         ERROR="\033[31;47m",
@@ -19,13 +19,13 @@ class ColoredFormatter(logging.Formatter):
 
     def format(self, record):
         color = self.COLOR_LEVEL[record.levelname]
-        color_reset = '\033[0m'
+        color_reset = "\033[0m"
         model = color + "%-7s" + color_reset
         record.msg = model % record.msg
         record.funcName = model % record.funcName
         record.name = model % record.name
         record.levelname = model % record.levelname
-        return super(ColoredFormatter, self).format(record)
+        return super().format(record)
 
 
 def create_logger(name="TODO_PROJECT_NAME", level="INFO"):
@@ -56,7 +56,7 @@ def create_logger(name="TODO_PROJECT_NAME", level="INFO"):
     if len(_logger.handlers) > 0:
         if _logger.level != level:
             _logger.setLevel(level)
-            _logger.info("changed logging level to %s", level_name)
+            _logger.debug("changed logging level to %s", level_name)
         return _logger
 
     # set up logging to console
@@ -65,5 +65,5 @@ def create_logger(name="TODO_PROJECT_NAME", level="INFO"):
 
     _logger.addHandler(console)
     _logger.setLevel(level)
-    _logger.info("logger '%s' activated at level %s", name, level_name)
+    _logger.debug("logger '%s' activated at level %s", name, level_name)
     return _logger

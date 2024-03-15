@@ -1,12 +1,12 @@
-import TODO_PROJECT_NAME
+import start_project
 
 
 class Test_Log:
     def test_init(self):
-        logger = TODO_PROJECT_NAME.log.create_logger()
+        logger = start_project.log.create_logger()
 
-        assert logger.name == "TODO_PROJECT_NAME"
+        assert logger.name == "start_project"
         assert logger.level == 20
 
     def test_change_level(self):
-        logger = TODO_PROJECT_NAME.log.create_logger()  # noqa: F841
+        logger = start_project.log.create_logger()  # noqa: F841

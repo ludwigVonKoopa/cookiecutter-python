@@ -3,9 +3,9 @@ requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "start_project"
+name = "TODO_PROJECT_NAME"
 dynamic = ["version"]
-authors = [{name = "user", email = "user@mail.com"}]
+authors = [{name = "ludwigVonKoopa", email = "49512274+ludwigVonKoopa@users.noreply.github.com"}]
 description = "TODO_DESCRIPTION"
 readme = "README.md"
 requires-python = ">=3.9"
@@ -13,7 +13,7 @@ classifiers = [
     "Programming Language :: Python :: 3",
 ]
 dependencies = [
-    "setuptools-scm"
+    "setuptools-scm", "ipykernel"
 ]
 
 [project.optional-dependencies]
@@ -27,15 +27,15 @@ changelog = "https://xxx"
 repository = "https://gitlab.fr/xx/yy"
 
 
-[project.scripts]
-start_project = "start_project.appli:cli"
+# [project.scripts]
+# my_script = "TODO_PROJECT_NAME.module:function"
 
 [tool.setuptools.packages.find]
 namespaces = true
 where = ["src"]
 
 [tool.setuptools.package-data]
-"start_project.share" = ["*"]
+"TODO_PROJECT_NAME.share" = ["*"]
 
 [tool.mypy]
 warn_return_any = true
