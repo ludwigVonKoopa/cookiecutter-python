@@ -1,0 +1,115 @@
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "{{cookiecutter.project_slug}}"
+dynamic = ["version"]
+description = "{{cookiecutter.project_short_description}}"
+readme = "README.rst"
+authors = [
+  {name = "{{cookiecutter.full_name}}", email = "{{cookiecutter.email}}"}
+]
+maintainers = [
+  {name = "{{cookiecutter.full_name}}", email = "{{cookiecutter.email}}"}
+]
+classifiers = [
+    "Programming Language :: Python :: 3",
+]
+license = {text = "{{cookiecutter.open_source_license}}"}
+dependencies = ["setuptools-scm", "ipykernel"]
+
+[project.optional-dependencies]
+test = ["pytest", "pytest-cov"]
+dev  = ["black", "flake8", "isort", "pre-commit"]
+doc  = ["sphinx", "pydata-sphinx-theme"]
+
+[project.urls]
+
+bugs = "https://github.com/{{cookiecutter.__gh_slug}}/issues"
+changelog = "https://github.com/{{cookiecutter.__gh_slug}}/blob/master/changelog.md"
+homepage = "https://github.com/{{cookiecutter.__gh_slug}}"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+
+[tool.setuptools.packages.find]
+namespaces = true
+where = ["src"]
+
+[tool.setuptools.package-data]
+"{{ cookiecutter.project_slug }}.share" = ["*"]
+
+[project.scripts]
+{{cookiecutter.project_slug}} = "{{cookiecutter.project_slug}}.cli:app"
+
+
+# Mypy
+# ----
+
+[tool.mypy]
+files = "."
+
+# Use strict defaults
+strict = true
+warn_unreachable = true
+warn_no_return = true
+
+# ruff
+# ----
+
+[tool.ruff]
+line-length = 120
+target-version = "py39"
+exclude = [
+    ".eggs",
+    ".git",
+    ".pytest_cache",
+    "build",
+]
+
+[tool.ruff.lint]
+extend-select = ["I"]
+ignore = [
+  "E402",
+  "E501",
+  "E731",
+]
+select = [
+  "F", # Pyflakes
+  "E", # Pycodestyle
+  "W",
+  "TID", # flake8-tidy-imports (absolute imports)
+  "I", # isort
+  "UP", # Pyupgrade
+]
+
+[tool.flake8]
+max-line-length = 120
+
+[tool.isort]
+profile = "black"
+line_length = 120
+combine_as_imports = true
+
+
+[[tool.mypy.overrides]]
+# Don't require test functions to include types
+module = "tests.*"
+allow_untyped_defs = true
+disable_error_code = "attr-defined"
+
+[tool.coverage.report]
+exclude_lines = ["pragma: no coverage"]
+[tool.pytest.ini_options]
+addopts = "-rs --cov-config=pyproject.toml --cov={{ cookiecutter.project_slug }} --cov-report html --cov-report term --cov-report xml --durations=5"
+testpaths = ["tests"]
+filterwarnings = ["ignore:tostring.*is deprecated"]
+markers = [
+  # "outputs: marks tests that check the netcdfs outputs (deselect with '-m \"not outputs\"')",
+]
+
+[tool.setuptools_scm]
+fallback_version = "0.0.0.dev"
+write_to = "src/{{ cookiecutter.project_slug }}/_version.py"

@@ -1,23 +1,14 @@
-# test if the project can be installed
+rm -rf /tmp/to_delete
+mkdir /tmp/to_delete
+cookiecutter .  -o /tmp/to_delete -f --no-input
+cd /tmp/to_delete/awesome_project
 
-PATH_FOLDER="/tmp/test/"
-NAME_PROJECT="xxxx_testproject"
-
-# rm -rf PATH_FOLDER
-mkdir -p $PATH_FOLDER
-
-python build_project.py \
-    --project-path=$PATH_FOLDER \
-    --project-name=$NAME_PROJECT \
-    --user-name="obiwan" \
-    --conda-env-name="xxxx_testmycondaenv"
-
-cd $PATH_FOLDER/$NAME_PROJECT
 git init
+git add *
+git commit -m "test"
+
+LIBRARY_PATH=$(python -c "import sys; import os; print(os.path.join(os.path.dirname(os.path.dirname(sys.executable)), 'lib', 'python3.10', 'site-packages', 'awesome_project'))")
+rm -rf $LIBRARY_PATH*
+conda activate test_ipp
 make install
-
-make test
-make check -k
-
-# cd
-# rm -rf $PATH_FOLDER/$NAME_PROJECT
+make doc

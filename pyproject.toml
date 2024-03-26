@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "start_project"
 dynamic = ["version"]
 authors = [{name = "user", email = "user@mail.com"}]
-description = "TODO_DESCRIPTION"
+description = "python template for cookieclicker"
 readme = "README.md"
 requires-python = ">=3.9"
 classifiers = [

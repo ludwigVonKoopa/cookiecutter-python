@@ -1,0 +1,19 @@
+name: {{ cookiecutter.conda_env_name }}
+channels:
+  - conda-forge
+
+dependencies:
+  # usefull and needed for all projects
+  - python>=3.9
+  - setuptools-scm   # automatic project numbering
+  - ipykernel
+  - pip
+
+  # for your project
+  # - numpy
+  # - netCDF4
+  # - PyYAML
+
+  # - matplotlib
+  # - zarr
+  # - pandas
