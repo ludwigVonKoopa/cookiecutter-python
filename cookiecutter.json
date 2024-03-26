@@ -1,0 +1,15 @@
+{
+  "full_name": "LudwigVonKoopa",
+  "email": "49512274+ludwigVonKoopa@users.noreply.github.com",
+  "github_username": "ludwigVonKoopa",
+  "project_name": "awesome-project",
+  "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
+  "project_short_description": "Python Boilerplate contains all the boilerplate you need to create a Python package.",
+  "conda_env_name": "py_{{ cookiecutter.project_slug }}",
+  "create_author_file": "y",
+  "_copy_without_render": [
+          "*custom-*template.rst"
+      ],
+  "open_source_license": ["MIT license", "BSD license", "ISC license", "Apache Software License 2.0", "GNU General Public License v3", "Not open source"],
+  "__gh_slug": "{{ cookiecutter.github_username }}/{{ cookiecutter.project_slug }}"
+}
