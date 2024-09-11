@@ -44,6 +44,10 @@ coverage.xml
 doc/_build/
 doc/build/
 doc/source/_autosummary
+{% if cookiecutter.create_matplotlib_gallery -%}
+doc/source/gallery
+{%- endif %}
+
 
 # Jupyter Notebook
 .ipynb_checkpoints

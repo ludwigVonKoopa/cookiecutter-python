@@ -10,14 +10,21 @@ dependencies:
   - pip
 
   # for your project
-  # - numpy
+  - numpy
+
+  {% if cookiecutter.create_matplotlib_gallery -%}
+  - cartopy
+  - matplotlib
+  {%- endif %}
   # - cython
   # - netCDF4
-  # - PyYAML
+  # - xarray
+  # - pandas
 
   # - matplotlib
+
+  # - PyYAML
   # - zarr
-  # - pandas
 
   #### tests
   - pytest
@@ -27,6 +34,9 @@ dependencies:
   #### doc
   - sphinx
   - pydata-sphinx-theme
+  {% if cookiecutter.create_matplotlib_gallery -%}
+  - sphinx-gallery
+  {%- endif %}
 
   #### dev
   - black

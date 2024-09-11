@@ -40,10 +40,22 @@ extensions = [
     "sphinx.ext.coverage",
     "sphinx.ext.viewcode",
     "sphinx.ext.extlinks",
+{% if cookiecutter.create_matplotlib_gallery -%}
+    "matplotlib.sphinxext.plot_directive",
+    "sphinx_gallery.gen_gallery",
+{%- endif %}
     "myst_parser"
 ]
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
+
+{% if cookiecutter.create_matplotlib_gallery -%}
+sphinx_gallery_conf = {
+    "examples_dirs": ["../../examples"],
+    "gallery_dirs": ["gallery"],
+    "filename_pattern": "plot",
+}
+{%- endif %}
 
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
@@ -82,9 +94,13 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 pygments_style = 'sphinx'
 
 intersphinx_mapping = {
-    # "numpy": ("https://numpy.org/doc/stable/", None),
-    # "python": ("https://docs.python.org/3/", None),
-    # "matplotlib": ("https://matplotlib.org/stable/", None),
+    # 'python': ('https://docs.python.org/{.major}'.format(sys.version_info), None),
+    # 'numpy': ('https://numpy.org/doc/stable/', None),
+    # 'matplotlib': ('https://matplotlib.org/stable', None),
+    # 'sklearn': ('https://scikit-learn.org/stable', None),
+    # 'sphinx': ('https://www.sphinx-doc.org/en/master', None),
+    # 'pandas': ('https://pandas.pydata.org/pandas-docs/stable/', None),
+    # "xarray": ("https://docs.xarray.dev/en/stable/", None),
 }
 
 autosummary_generate = True
@@ -101,6 +117,12 @@ todo_include_todos = False
 html_theme = 'alabaster'
 html_theme = "pydata_sphinx_theme"
 
+html_sidebars = {
+    "readme": [],
+    "installation": [],
+    "usage": [],
+    "changelog": [],
+}
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".

@@ -102,8 +102,14 @@ disable_error_code = "attr-defined"
 
 [tool.coverage.report]
 exclude_lines = ["pragma: no coverage"]
+
 [tool.pytest.ini_options]
-addopts = "-rs --cov-config=pyproject.toml --cov={{ cookiecutter.project_slug }} --cov-report html --cov-report term --cov-report xml --durations=5"
+{% if cookiecutter.create_matplotlib_gallery -%}
+addopts = "-rs --cov-config=pyproject.toml --cov={{ cookiecutter.project_slug }} --cov-report html --cov-report term --cov-report xml --durations=5 --mpl --mpl-baseline-path=tests/baseline --mpl-generate-summary=html --mpl-results-path=mpl_comparaison"
+mpl-use-full-test-name = false
+{% else %}
+addopts = "-rs --cov-config=pyproject.toml --cov={{ cookiecutter.project_slug }} --cov-report html --cov-report term --cov-report xml --durations=5 "
+{%- endif %}
 testpaths = ["tests"]
 filterwarnings = ["ignore:tostring.*is deprecated"]
 markers = [
