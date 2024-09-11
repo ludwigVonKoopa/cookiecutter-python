@@ -30,7 +30,7 @@ class ColoredFormatter(logging.Formatter):
         return formatter.format(record)
 
 
-def create_logger(name="{{ cookiecutter.project_name }}", level="INFO", filename=None):
+def create_logger(name="{{ cookiecutter.project_slug }}", level="DEBUG", filename=None):
     """build a logger with name and level wanted
 
     can be call again to change level of logger already initialized
@@ -38,7 +38,7 @@ def create_logger(name="{{ cookiecutter.project_name }}", level="INFO", filename
     Parameters
     ----------
     name : str, optional
-        name of the logger, by default "{{ cookiecutter.project_name }}"
+        name of the logger, by default "{{ cookiecutter.project_slug }}"
     level : str or int, optional
         level of the logger, by default "WARNING"
     filename : str or None, optional
@@ -58,8 +58,9 @@ def create_logger(name="{{ cookiecutter.project_name }}", level="INFO", filename
 
     # si le logger existe déjà, on ne fait rien
     if len(_logger.handlers) > 0:
-        if _logger.level != level:
-            _logger.setLevel(level)
+        handler = _logger.handlers[0]
+        if handler.level != level:
+            handler.setLevel(level)
             _logger.info("changed logging level to %s", level_name)
         return _logger
 

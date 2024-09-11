@@ -63,10 +63,15 @@ doc: ## generate Sphinx HTML documentation, including API docs
 dclean:
 	rm -rf doc/build
 	rm -rf doc/source/_autosummary
-	rm -rf doc/source/gallery
-
+	{% if cookiecutter.create_matplotlib_gallery -%}
+		rm -rf doc/source/gallery
+	{%- endif %}
 	find doc/ -name '*.pyc' -delete
 
+{% if cookiecutter.create_matplotlib_gallery -%}
+generate_ref:
+	pytest --mpl-generate-path=tests/baseline -m new
+{%- endif %}
 
 install: clean ## install the package to the active Python's site-packages
 

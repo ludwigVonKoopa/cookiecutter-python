@@ -1,4 +1,5 @@
 {
+  "create_matplotlib_gallery": false,
   "full_name": "LudwigVonKoopa",
   "email": "49512274+ludwigVonKoopa@users.noreply.github.com",
   "github_username": "ludwigVonKoopa",
@@ -6,7 +7,6 @@
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
   "project_short_description": "Python Boilerplate contains all the boilerplate you need to create a Python package.",
   "conda_env_name": "py_{{ cookiecutter.project_slug }}",
-  "create_author_file": "y",
   "_copy_without_render": [
           "*custom-*template.rst"
       ],
