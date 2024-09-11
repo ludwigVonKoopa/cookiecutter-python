@@ -88,5 +88,9 @@ awesome_project/
 
 Then:
 
-* get to your newly created project `cd mynewproject`
 * create your conda environment `conda env create -f environment_dev.yml`
+* you can now start everything:
+  - `conda activate py_awesome_project_dev` by default, or use the one defined with the cookiecutter command
+  - `pip install .` to install the project
+  - `make doc` to generate a documentation
+  - `pytest` to check your code and generate coverage
