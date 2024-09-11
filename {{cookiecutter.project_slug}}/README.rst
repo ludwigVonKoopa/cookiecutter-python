@@ -30,4 +30,4 @@ Credits
 This package was created with Cookiecutter_ using this template_
 
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
-.. _template: https://github.com/ludwigVonKoopa/new_project
+.. _template: https://github.com/ludwigVonKoopa/cookiecutter-python

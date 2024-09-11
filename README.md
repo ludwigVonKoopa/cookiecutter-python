@@ -22,7 +22,7 @@ Install cookiecutter and generate a new python project:
 
 ```bash
   pip install cookiecutter
-  cookiecutter https://github.com/ludwigVonKoopa/new_project.git
+  cookiecutter https://github.com/ludwigVonKoopa/cookiecutter-python.git
 ```
 
 Cookiecutter prompts you for information regarding your project. If not sure, just press enter and it will use default values:
