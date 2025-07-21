@@ -40,11 +40,11 @@ extensions = [
     "sphinx.ext.coverage",
     "sphinx.ext.viewcode",
     "sphinx.ext.extlinks",
+    "myst_parser"
     {% if cookiecutter.create_matplotlib_gallery -%}
     "matplotlib.sphinxext.plot_directive",
     "sphinx_gallery.gen_gallery",
     {%- endif %}
-    "myst_parser"
 ]
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ["_templates"]

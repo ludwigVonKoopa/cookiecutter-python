@@ -2,6 +2,7 @@ import logging
 
 import {{ cookiecutter.project_slug }}
 
+
 class Test_Log:
     def test_init(self):
         logger = {{ cookiecutter.project_slug }}.log.create_logger()
