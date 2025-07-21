@@ -2,6 +2,7 @@ import argparse
 
 import {{ cookiecutter.project_slug }}.log  # noqa: F401
 
+
 def usage():
     parser = argparse.ArgumentParser()
 
@@ -18,6 +19,6 @@ def usage():
 
 def app():
     args = usage()
-    {{ cookiecutter.project_slug }}.log.create_logger(level="DEBUG")
+    {{ cookiecutter.project_slug }}.log.create_logger(level=args.verbose)
 
     print("one simple command line")

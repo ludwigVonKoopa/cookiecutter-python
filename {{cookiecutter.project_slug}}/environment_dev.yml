@@ -43,6 +43,7 @@ dependencies:
   # - mypy
   - flake8
   - isort
-  # - pre-commit
+  - pre-commit
+  - ruff
   # - pip:
   #   -

@@ -40,14 +40,14 @@ extensions = [
     "sphinx.ext.coverage",
     "sphinx.ext.viewcode",
     "sphinx.ext.extlinks",
-{% if cookiecutter.create_matplotlib_gallery -%}
+    {% if cookiecutter.create_matplotlib_gallery -%}
     "matplotlib.sphinxext.plot_directive",
     "sphinx_gallery.gen_gallery",
-{%- endif %}
+    {%- endif %}
     "myst_parser"
 ]
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['_templates']
+templates_path = ["_templates"]
 
 {% if cookiecutter.create_matplotlib_gallery -%}
 sphinx_gallery_conf = {
@@ -60,12 +60,12 @@ sphinx_gallery_conf = {
 # The suffix(es) of source filenames.
 # You can specify multiple suffix as a list of string:
 #
-source_suffix = ['.rst', '.md']
+source_suffix = [".rst", ".md"]
 # source_suffix = '.rst'
 
 
 # General information about the project.
-project = '{{ cookiecutter.project_name }}'
+project = "{{ cookiecutter.project_name }}"
 copyright = "{% now 'local', '%Y' %}, {{ cookiecutter.full_name }}"
 author = "{{ cookiecutter.full_name }}"
 
@@ -88,18 +88,18 @@ language = "en"
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ["_build", "Thumbs.db", ".DS_Store"]
 
 # The name of the Pygments (syntax highlighting) style to use.
-pygments_style = 'sphinx'
+pygments_style = "sphinx"
 
 intersphinx_mapping = {
-    # 'python': ('https://docs.python.org/{.major}'.format(sys.version_info), None),
-    # 'numpy': ('https://numpy.org/doc/stable/', None),
-    # 'matplotlib': ('https://matplotlib.org/stable', None),
-    # 'sklearn': ('https://scikit-learn.org/stable', None),
-    # 'sphinx': ('https://www.sphinx-doc.org/en/master', None),
-    # 'pandas': ('https://pandas.pydata.org/pandas-docs/stable/', None),
+    # "python": ("https://docs.python.org/{.major}".format(sys.version_info), None),
+    # "numpy": ("https://numpy.org/doc/stable/", None),
+    # "matplotlib": ("https://matplotlib.org/stable", None),
+    # "sklearn": ("https://scikit-learn.org/stable", None),
+    # "sphinx": ("https://www.sphinx-doc.org/en/master", None),
+    # "pandas": ("https://pandas.pydata.org/pandas-docs/stable/", None),
     # "xarray": ("https://docs.xarray.dev/en/stable/", None),
 }
 
@@ -114,7 +114,7 @@ todo_include_todos = False
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+html_theme = "alabaster"
 html_theme = "pydata_sphinx_theme"
 
 html_sidebars = {
@@ -138,4 +138,4 @@ html_static_path = ["_static"]
 # -- Options for HTMLHelp output ---------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = '{{ cookiecutter.project_slug }}doc'
+htmlhelp_basename = "{{ cookiecutter.project_slug }}doc"

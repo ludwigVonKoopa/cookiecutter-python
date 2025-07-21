@@ -1,5 +1,6 @@
-import {{ cookiecutter.project_slug }}
 import logging
+
+import {{ cookiecutter.project_slug }}
 
 class Test_Log:
     def test_init(self):
