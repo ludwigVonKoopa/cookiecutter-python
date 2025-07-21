@@ -1,0 +1,53 @@
+{
+    "name": "{{ cookiecutter.project_slug }} vscode",
+    "build": {
+        "dockerfile": "../Dockerfile",
+        "context": ""
+    },
+    // "mounts": [
+    //     "source=,targer=,type=bind"
+    // ],
+    "workspaceFolder": "/workspaces/",
+    "remoteUser": "vscode",
+    // executed before container is loaded, not in the container but in the user machine
+    // "initializeCommand": "bash .devcontainer/initializeCommand.sh",
+
+    // executed inside the container, after build
+    "onCreateCommand": "bash /workspaces/{{ cookiecutter.project_slug }}/.devcontainer/onCreateCommand.sh",
+    "postCreateCommand": "bash /workspaces/{{ cookiecutter.project_slug }}/.devcontainer/postCreateCommand.sh",
+
+    // not sure if necessary, as its already specified in Dockerfile
+    "containerEnv": {
+        "SHELL": "/bin/bash"
+    },
+
+    "customizations": {
+        "vscode": {
+            "extensions" : [
+                "ms-python.python",
+                "charliermarsh.ruff",
+                "ms-python.vscode-pylance"
+            ],
+            "settings": {
+                "terminal.integrated.shell.linux": "/bin/bash",
+                "[python]": {
+                    "editor.formatOnSave": true,
+                    "editor.codeActionsOnSave": {
+                        "source.fixAll": "explicit",
+                        "source.organizeImports": "explicit"
+                    },
+                    "ruff.organizeImports": true,
+                    "editor.defaultFormatter": "charliermarsh.ruff"
+                },
+                "ruff.interpreter": ["/opt/conda/envs/ipp_dev/bin/python"],
+                "files.insertFinalNewline": true,
+                "files.trimFinalNewlines": true,
+                "files.trimTrailingWhitespace": true,
+                "flake8.args": [
+                    "--max-line-length=120"
+                ],
+                "terminal.integrated.defaultProfile.linux": "bash"
+            }
+        }
+    }
+}

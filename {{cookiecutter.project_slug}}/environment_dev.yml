@@ -37,6 +37,7 @@ dependencies:
   {% if cookiecutter.create_matplotlib_gallery -%}
   - sphinx-gallery
   {%- endif %}
+  - myst-parser
 
   #### dev
   - black

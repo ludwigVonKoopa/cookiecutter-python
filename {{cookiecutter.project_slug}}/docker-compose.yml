@@ -1,0 +1,27 @@
+services:
+
+
+  test-service:
+    image: project:latest
+    build:
+      context: "."
+      dockerfile: Dockerfile
+    container_name: test-container
+    # user: "${HOST_UID}:${HOST_GID}"  # run as your user
+    volumes:
+      # - ${INPUT_DIR}:/data/input       # host ./input -> container /data/input
+      # - ${OUTPUT_DIR}:/data/output      # host ./output -> container /data/output
+      - /tmp/to_delete/awesome_project:/data/project      # host ./output -> container /data/output
+    working_dir: /opt/           # where metimage_prototype and env exist
+    entrypoint: [ "/bin/bash", "-c" ]
+    command:
+      - |
+        source /opt/conda/etc/profile.d/conda.sh
+        conda activate py_{{ cookiecutter.project_slug }}_dev
+        mkdir -p /opt/project
+
+        time cp -r /data/project/* /opt/project/
+        cd /opt/project/
+        pip install .
+        pytest
+        make doc
